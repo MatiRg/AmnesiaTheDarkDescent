@@ -47,7 +47,8 @@
 #include "SDL/SDL.h"
 #endif
 
-#include "impl/scriptstring.h"
+#include "impl/scriptarray.h"
+#include "impl/scriptstdstring.h"
 
 #include "system/String.h"
 
@@ -411,8 +412,10 @@ namespace hpl {
 		mpScriptOutput = hplNew( cScriptOutput, () );
 		mpScriptEngine->SetMessageCallback(asMETHOD(cScriptOutput,AddMessage), mpScriptOutput, asCALL_THISCALL);
 
-		RegisterScriptString(mpScriptEngine);
-	
+		RegisterScriptArray(mpScriptEngine, true);
+		RegisterStdString(mpScriptEngine);
+		RegisterStdStringUtils(mpScriptEngine);
+
 		mlHandleCount = 0;
 
 		Log("-------- THE HPL ENGINE LOG ------------\n");

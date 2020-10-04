@@ -180,7 +180,8 @@ namespace hpl {
 
 	int cSqScript::GetFuncHandle(const tString& asFunc)
 	{
-		return mpModule->GetFunctionIdByName(asFunc.c_str());
+		asIScriptFunction* func = mpModule->GetFunctionByName(asFunc.c_str());
+		return func ? func->GetId() : -1;
 	}
 
 	//-----------------------------------------------------------------------
@@ -203,12 +204,26 @@ namespace hpl {
 
 	bool cSqScript::Run(int alHandle)
 	{
-		mpContext->Prepare(alHandle);
+		if (alHandle >= 0)
+		{	
+			asIScriptFunction* func = mpModule->GetFunctionByIndex( static_cast<asUINT>(alHandle) );
+			if (func)
+			{
+				mpContext->Prepare(func);
 
-		/* Set all the args here */
+				/* Set all the args here */
 
-		mpContext->Execute();
-
+				mpContext->Execute();
+			}
+			else
+			{
+				Error("Invalid script function id = '%d'!\n", alHandle);
+			}
+		}
+		else
+		{
+			Error("Invalid script function id = '%d'!\n", alHandle);
+		}
 		return true;
 	}
 

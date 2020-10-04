@@ -542,7 +542,7 @@ void cLuxScriptHandler::InitScriptFunctions()
 	AddFunc("void SetInventoryMessage(string &in asTextCategory, string &in asTextEntry, float afTime)",(void *)SetInventoryMessage);
 	
 	AddFunc("void GiveItem(string &in asName, string &in asType, string &in asSubTypeName, string &in asImageName, float afAmount)",(void *)GiveItem);
-	AddFunc("void GiveItemFromFile(string& asName, string& asFileName)",(void *)GiveItemFromFile);
+	AddFunc("void GiveItemFromFile(string &in asName, string &in asFileName)",(void *)GiveItemFromFile);
 	AddFunc("void RemoveItem(string &in asName)",(void *)RemoveItem);
 	AddFunc("bool HasItem(string &in asName)",(void *)HasItem);
 
@@ -552,15 +552,15 @@ void cLuxScriptHandler::InitScriptFunctions()
 	AddFunc("void AddUseItemCallback(string &in asName, string &in asItem, string &in asEntity, string &in asFunction, bool abAutoDestroy)",(void *)AddUseItemCallback);
 	AddFunc("void RemoveUseItemCallback(string &in asName)",(void *)RemoveUseItemCallback);
 
-	AddFunc("void PreloadParticleSystem(string& asPSFile)",(void *)PreloadParticleSystem);
-	AddFunc("void PreloadSound(string& asSoundFile)",(void *)PreloadSound);
+	AddFunc("void PreloadParticleSystem(string &in asPSFile)",(void *)PreloadParticleSystem);
+	AddFunc("void PreloadSound(string &in asSoundFile)",(void *)PreloadSound);
 
 	AddFunc("void CreateParticleSystemAtEntity(string &in asPSName, string &in asPSFile, string &in asEntity, bool abSavePS)",(void *)CreateParticleSystemAtEntity);
-	AddFunc("void CreateParticleSystemAtEntityExt(	string &in asPSName, string &in asPSFile, string &in asEntity, bool abSavePS, float afR, float afG, float afB, float afA, bool abFadeAtDistance, float afFadeMinEnd, float afFadeMinStart, float afFadeMaxStart, float afFadeMaxEnd)", (void *)CreateParticleSystemAtEntityExt);
+	AddFunc("void CreateParticleSystemAtEntityExt(string &in asPSName, string &in asPSFile, string &in asEntity, bool abSavePS, float afR, float afG, float afB, float afA, bool abFadeAtDistance, float afFadeMinEnd, float afFadeMinStart, float afFadeMaxStart, float afFadeMaxEnd)", (void *)CreateParticleSystemAtEntityExt);
 	AddFunc("void DestroyParticleSystem(string &in asName)",(void *)DestroyParticleSystem); 
 	
 	AddFunc("void PlaySoundAtEntity(string &in asSoundName, string &in asSoundFile, string &in asEntity, float afFadeSpeed, bool abSaveSound)",(void *)PlaySoundAtEntity);
-	AddFunc("void FadeInSound(string& asSoundName, float afFadeTime, bool abPlayStart)",(void *)FadeInSound);
+	AddFunc("void FadeInSound(string &in asSoundName, float afFadeTime, bool abPlayStart)",(void *)FadeInSound);
 	AddFunc("void StopSound(string &in asSoundName, float afFadeTime)",(void *)StopSound);
 	AddFunc("void PlayMusic(string &in asMusicFile, bool abLoop, float afVolume, float afFadeTime, int alPrio, bool abResume)",(void *)PlayMusic);
 	AddFunc("void StopMusic(float afFadeTime, int alPrio)",(void *)StopMusic);
@@ -569,7 +569,7 @@ void cLuxScriptHandler::InitScriptFunctions()
 	
 	AddFunc("void SetLightVisible(string &in asLightName, bool abVisible)",(void *)SetLightVisible);
 	AddFunc("void FadeLightTo(string &in asLightName, float afR, float afG, float afB, float afA, float afRadius, float afTime)",(void *)FadeLightTo);
-	AddFunc("void SetLightFlickerActive(string& asLightName, bool abActive)", (void *)SetLightFlickerActive);
+	AddFunc("void SetLightFlickerActive(string &in asLightName, bool abActive)", (void *)SetLightFlickerActive);
 
 	AddFunc("void SetEntityActive(string &in asName, bool abActive)",(void *)SetEntityActive);
 	AddFunc("void SetEntityVisible(string &in asName, bool abVisible)",(void *)SetEntityVisible);
@@ -585,8 +585,8 @@ void cLuxScriptHandler::InitScriptFunctions()
 	AddFunc("void SetEntityPlayerLookAtCallback(string &in asName, string &in asCallback, bool abRemoveWhenLookedAt)",(void *)SetEntityPlayerLookAtCallback);
 	AddFunc("void SetEntityPlayerInteractCallback(string &in asName, string &in asCallback, bool abRemoveOnInteraction)",(void *)SetEntityPlayerInteractCallback);
 	AddFunc("void SetEntityCallbackFunc(string &in asName, string &in asCallback)", (void *)SetEntityCallbackFunc);
-	AddFunc("void SetEntityConnectionStateChangeCallback(string& asName, string& asCallback)", (void *)SetEntityConnectionStateChangeCallback);
-	AddFunc("void SetEntityInteractionDisabled(string& asName, bool abDisabled)", (void *)SetEntityInteractionDisabled);
+	AddFunc("void SetEntityConnectionStateChangeCallback(string &in asName, string &in asCallback)", (void *)SetEntityConnectionStateChangeCallback);
+	AddFunc("void SetEntityInteractionDisabled(string &in asName, bool abDisabled)", (void *)SetEntityInteractionDisabled);
 	AddFunc("bool GetEntitiesCollide(string &in asEntityA, string &in asEntityB)",(void *)GetEntitiesCollide);
 	
 	AddFunc("void SetPropEffectActive(string &in asName, bool abActive, bool abFadeAndPlaySounds)", (void *)SetPropEffectActive);
@@ -596,9 +596,9 @@ void cLuxScriptHandler::InitScriptFunctions()
 	AddFunc("void RotatePropToSpeed(string &in asName, float afAcc, float afGoalSpeed, float afAxisX, float afAxisY, float afAxisZ, bool abResetSpeed, string &in asOffsetArea)", (void *)RotatePropToSpeed);	
 	AddFunc("void StopPropMovement(string &in asName)", (void *)StopPropMovement);	
 
-	AddFunc("void AddAttachedPropToProp(string& asPropName, string& asAttachName, string& asAttachFile, float fPosX, float fPosY, float fPosZ, float fRotX, float fRotY, float fRot)",(void *)AddAttachedPropToProp);
-	AddFunc("void AttachPropToProp(string& asPropName, string& asAttachName, string& asAttachFile, float fPosX, float fPosY, float fPosZ, float fRotX, float fRotY, float fRot)",(void *)AttachPropToProp);
-	AddFunc("void RemoveAttachedPropFromProp(string& asPropName, string& asAttachName)",(void *)RemoveAttachedPropFromProp);
+	AddFunc("void AddAttachedPropToProp(string &in asPropName, string &in asAttachName, string &in asAttachFile, float fPosX, float fPosY, float fPosZ, float fRotX, float fRotY, float fRot)",(void *)AddAttachedPropToProp);
+	AddFunc("void AttachPropToProp(string &in asPropName, string &in asAttachName, string &in asAttachFile, float fPosX, float fPosY, float fPosZ, float fRotX, float fRotY, float fRot)",(void *)AttachPropToProp);
+	AddFunc("void RemoveAttachedPropFromProp(string &in asPropName, string &in asAttachName)",(void *)RemoveAttachedPropFromProp);
 
 	AddFunc("void SetLampLit(string &in asName, bool abLit, bool abEffects)",(void *)SetLampLit); 
 	AddFunc("void SetSwingDoorLocked(string &in asName, bool abLocked, bool abEffects)",(void *)SetSwingDoorLocked);
@@ -624,7 +624,7 @@ void cLuxScriptHandler::InitScriptFunctions()
 	AddFunc("void SetButtonSwitchedOn(string &in asName, bool abSwitchedOn, bool abEffects)",(void *)SetButtonSwitchedOn);
 	AddFunc("void SetAllowStickyAreaAttachment(bool abX)", (void *)SetAllowStickyAreaAttachment);
 	AddFunc("void AttachPropToStickyArea(string &in asAreaName, string &in asProp)", (void *)AttachPropToStickyArea);
-	AddFunc("void AttachBodyToStickyArea(string& asAreaName, string& asBody)", (void *)AttachBodyToStickyArea);
+	AddFunc("void AttachBodyToStickyArea(string &in asAreaName, string &in asBody)", (void *)AttachBodyToStickyArea);
 	AddFunc("void DetachFromStickyArea(string &in asAreaName)", (void *)DetachFromStickyArea);
 	AddFunc("void SetNPCAwake(string &in asName, bool abAwake, bool abEffects)",(void *)SetNPCAwake);
 	AddFunc("void SetNPCFollowPlayer(string &in asName, bool abX)",(void *)SetNPCFollowPlayer);
@@ -641,11 +641,11 @@ void cLuxScriptHandler::InitScriptFunctions()
 	AddFunc("void TeleportEnemyToNode(string &in asEnemyName, string &in asNodeName, bool abChangeY)",(void *)TeleportEnemyToNode);
 	AddFunc("void TeleportEnemyToEntity(string &in asEnemyName, string &in asTargetEntity, string &in asTargetBody, bool abChangeY)",(void *)TeleportEnemyToEntity);
 
-	AddFunc("void ChangeManPigPose(string&in asName, string&in asPoseType)",(void *)ChangeManPigPose);
-	AddFunc("void SetTeslaPigFadeDisabled(string&in asName, bool abX)",(void *)SetTeslaPigFadeDisabled);
-	AddFunc("void SetTeslaPigSoundDisabled(string&in asName, bool abX)",(void *)SetTeslaPigSoundDisabled);
-	AddFunc("void SetTeslaPigEasyEscapeDisabled(string&in asName, bool abX)",(void *)SetTeslaPigEasyEscapeDisabled);
-	AddFunc("void ForceTeslaPigSighting(string&in asName)",(void *)ForceTeslaPigSighting);
+	AddFunc("void ChangeManPigPose(string &in asName, string &in asPoseType)",(void *)ChangeManPigPose);
+	AddFunc("void SetTeslaPigFadeDisabled(string &in asName, bool abX)",(void *)SetTeslaPigFadeDisabled);
+	AddFunc("void SetTeslaPigSoundDisabled(string &in asName, bool abX)",(void *)SetTeslaPigSoundDisabled);
+	AddFunc("void SetTeslaPigEasyEscapeDisabled(string &in asName, bool abX)",(void *)SetTeslaPigEasyEscapeDisabled);
+	AddFunc("void ForceTeslaPigSighting(string &in asName)",(void *)ForceTeslaPigSighting);
 	AddFunc("string& GetEnemyStateName(string &in asName)",(void *)GetEnemyStateName);
 
 	AddFunc("void SetPropHealth(string &in asName, float afHealth)",(void *)SetPropHealth);
@@ -672,7 +672,7 @@ void cLuxScriptHandler::InitScriptFunctions()
 
 	//AddFunc("void CreateRope(string &in asName,string &in asStartArea, string &in asEndArea, string &in asStartBody, string &in asEndBody,float afMinTotalLength, float afMaxTotalLength,float afSegmentLength, float afDamping,float afStrength, float afStiffness, string &in asMaterial, float afRadius, float afLengthTileAmount, float afLengthTileSize, string &in asSound,float afSoundStartSpeed, float afSoundStopSpeed,bool abAutoMove, float afAutoMoveAcc, float afAutoMoveMaxSpeed)",(void *)CreateRope);
 
-	AddFunc("void InteractConnectPropWithRope(string &in asName, string& asLeverName, string& asPropName, bool abInteractOnly, float afSpeedMul,float afMinSpeed, float afMaxSpeed, bool abInvert, int alStatesUsed)",(void *)InteractConnectPropWithRope);
+	AddFunc("void InteractConnectPropWithRope(string &in asName, string &in asLeverName, string &in asPropName, bool abInteractOnly, float afSpeedMul,float afMinSpeed, float afMaxSpeed, bool abInvert, int alStatesUsed)",(void *)InteractConnectPropWithRope);
 	AddFunc("void InteractConnectPropWithMoveObject(string &in asName, string &in asPropName, string &in asMoveObjectName, bool abInteractOnly,bool abInvert, int alStatesUsed)",(void *)InteractConnectPropWithMoveObject);
 	AddFunc("void ConnectEntities(string &in asName, string &in asMainEntity, string &in asConnectEntity, bool abInvertStateSent, int alStatesUsed, string &in asCallbackFunc)",(void *)ConnectEntities); 
 
@@ -690,9 +690,9 @@ void cLuxScriptHandler::InitScriptFunctions()
 	AddFunc("float MathClamp(float afX, float afMin, float afMax)",(void *)ScriptClamp);
 	AddFunc("float MathAbs(float afX)",(void *)ScriptAbs);
 
-	AddFunc("int StringToInt(string&in asString)",(void *)ScriptStringToInt);
-	AddFunc("float StringToFloat(string&in asString)",(void *)ScriptStringToFloat);
-	AddFunc("bool StringToBool(string&in asString)",(void *)ScriptStringToBool);
+	AddFunc("int StringToInt(string &in asString)",(void *)ScriptStringToInt);
+	AddFunc("float StringToFloat(string &in asString)",(void *)ScriptStringToFloat);
+	AddFunc("bool StringToBool(string &in asString)",(void *)ScriptStringToBool);
 
 }
 //-----------------------------------------------------------------------

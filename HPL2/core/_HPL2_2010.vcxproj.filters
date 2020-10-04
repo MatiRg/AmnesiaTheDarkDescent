@@ -564,12 +564,6 @@
     <ClInclude Include="include\impl\MutexWin32.h">
       <Filter>Impl\System</Filter>
     </ClInclude>
-    <ClInclude Include="include\impl\scripthelper.h">
-      <Filter>Impl\System</Filter>
-    </ClInclude>
-    <ClInclude Include="include\impl\scriptstring.h">
-      <Filter>Impl\System</Filter>
-    </ClInclude>
     <ClInclude Include="include\impl\SqScript.h">
       <Filter>Impl\System</Filter>
     </ClInclude>
@@ -1060,6 +1054,15 @@
     <ClInclude Include="include\impl\GamepadSDL2.h">
       <Filter>Impl\Input</Filter>
     </ClInclude>
+    <ClInclude Include="include\impl\scriptarray.h">
+      <Filter>Impl\System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\impl\scripthelper.h">
+      <Filter>Impl\System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\impl\scriptstdstring.h">
+      <Filter>Impl\System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sources\system\Container.cpp">
@@ -1489,15 +1492,6 @@
       <Filter>Impl\System</Filter>
     </ClCompile>
     <ClCompile Include="sources\impl\PlatformWin32.cpp">
-      <Filter>Impl\System</Filter>
-    </ClCompile>
-    <ClCompile Include="sources\impl\scripthelper.cpp">
-      <Filter>Impl\System</Filter>
-    </ClCompile>
-    <ClCompile Include="sources\impl\scriptstring.cpp">
-      <Filter>Impl\System</Filter>
-    </ClCompile>
-    <ClCompile Include="sources\impl\scriptstring_utils.cpp">
       <Filter>Impl\System</Filter>
     </ClCompile>
     <ClCompile Include="sources\impl\SqScript.cpp">
@@ -1931,6 +1925,18 @@
     </ClCompile>
     <ClCompile Include="sources\impl\GamepadSDL2.cpp">
       <Filter>Impl\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\impl\scriptarray.cpp">
+      <Filter>Impl\System</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\impl\scripthelper.cpp">
+      <Filter>Impl\System</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\impl\scriptstdstring.cpp">
+      <Filter>Impl\System</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\impl\scriptstdstring_utils.cpp">
+      <Filter>Impl\System</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

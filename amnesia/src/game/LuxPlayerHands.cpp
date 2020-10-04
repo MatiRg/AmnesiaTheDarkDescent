@@ -522,7 +522,7 @@ void cLuxPlayerHands::UpdatePlayerHandsPos(float afTimeStep)
 
 	cVector3f vRotation(pCam->GetPitch(), pCam->GetYaw(), pCam->GetRoll());
 	mlstCamRotations.push_back(vRotation);
-	if(mlstCamRotations.size() > mlMaxCamRotations) mlstCamRotations.pop_front();
+	if( static_cast<int>(mlstCamRotations.size()) > mlMaxCamRotations) mlstCamRotations.pop_front();
 	
 	////////////////////////////////////////
 	// Iterate all of the saved rotations and calculate a new

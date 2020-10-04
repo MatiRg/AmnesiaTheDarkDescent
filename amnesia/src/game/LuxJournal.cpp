@@ -1332,7 +1332,7 @@ void cLuxJournal::SetNoteListPage(int alPageNum, eLuxJournalState aState)
 
 
 	std::vector<cLuxJournal_ListPage> &vPages = mvNoteListPages[lIdx];
-	if(mlCurrentNoteListPage[lIdx] >= vPages.size())
+	if(mlCurrentNoteListPage[lIdx] >= static_cast<int>(vPages.size()) )
 	{
 		//No pages, disable both arrows.
 		mpImageBackward[aState]->SetEnabled(false);
@@ -1478,12 +1478,13 @@ void cLuxJournal::CreateMainGui()
 			pWidget->AddCallback(eGuiMessage_OnDraw,this, kGuiCallback(MainMenuTextOnDraw));
 
 
-
-			int lPrev = i-1;
-			int lNext = i+1;
+			size_t lNext = i+1u;
 			
-			if(lPrev>=0)
+			if (i > 0u )
+			{
+				size_t lPrev = i - 1u;
 				pWidget->SetFocusNavigation(eUIArrow_Up, vLabels[lPrev]);
+			}
 			if(lNext<vLabels.size())
 				pWidget->SetFocusNavigation(eUIArrow_Down,vLabels[lNext]);
 		}
@@ -1564,19 +1565,21 @@ void cLuxJournal::CreateNotesGui()
 		}
 	}
 
-	for(size_t i=0; i<mvNoteListPages[lListIdx].size(); ++i)
+	for(size_t i=0u; i<mvNoteListPages[lListIdx].size(); ++i)
 	{
 		cLuxJournal_ListPage *pListPage = &mvNoteListPages[lListIdx][i];
-		for(size_t j=0; j<pListPage->mvEntries.size(); ++j)
+		for(size_t j=0u; j<pListPage->mvEntries.size(); ++j)
 		{
 			cLuxJournal_ListEntry* pListEntry = &pListPage->mvEntries[j];
-			int lPrev = j-1;
-			int lNext = j+1;
+			size_t lNext = j+1u;
 
 			iWidget* pLabel = pListEntry->mlstWidgets.front();
 			
-			if(lPrev>=0)
+			if (j > 0u)
+			{
+				size_t lPrev = j - 1u;
 				pLabel->SetFocusNavigation(eUIArrow_Up, pListPage->mvEntries[lPrev].mlstWidgets.front());
+			}
 			if(lNext<pListPage->mvEntries.size())
 				pLabel->SetFocusNavigation(eUIArrow_Down, pListPage->mvEntries[lNext].mlstWidgets.front());
 		}
@@ -1640,7 +1643,7 @@ void cLuxJournal::CreateDiariesGui()
 				//Check if new page is needed!
 				if(vStartPos.y > mfMaxNoteListY)
 				{
-					vStartPos.y = 100;
+					vStartPos.y = 100.0f;
 					mvNoteListPages[lListIdx].push_back(cLuxJournal_ListPage());
 					pListPage = &mvNoteListPages[lListIdx].back();
 				}
@@ -1664,24 +1667,26 @@ void cLuxJournal::CreateDiariesGui()
 				pListPage->mvEntries.back().AddWidget(pLabel);
 				pListPage->mvEntries.back().AddWidget(pImage);
 
-				vStartPos.y += 30;
+				vStartPos.y += 30.0f;
 			}
 		}
 	}
 
-	for(size_t i=0; i<mvNoteListPages[lListIdx].size(); ++i)
+	for(size_t i=0u; i<mvNoteListPages[lListIdx].size(); ++i)
 	{
 		cLuxJournal_ListPage *pListPage = &mvNoteListPages[lListIdx][i];
-		for(size_t j=0; j<pListPage->mvEntries.size(); ++j)
+		for(size_t j=0u; j<pListPage->mvEntries.size(); ++j)
 		{
 			cLuxJournal_ListEntry* pListEntry = &pListPage->mvEntries[j];
-			int lPrev = j-1;
-			int lNext = j+1;
+			size_t lNext = j+1u;
 
 			iWidget* pLabel = pListEntry->mlstWidgets.front();
 			
-			if(lPrev>=0)
+			if (j > 0u)
+			{
+				size_t lPrev = j - 1u;
 				pLabel->SetFocusNavigation(eUIArrow_Up, pListPage->mvEntries[lPrev].mlstWidgets.front());
+			}
 			if(lNext<pListPage->mvEntries.size())
 				pLabel->SetFocusNavigation(eUIArrow_Down, pListPage->mvEntries[lNext].mlstWidgets.front());
 		}

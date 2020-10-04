@@ -183,7 +183,7 @@ namespace hpl {
 		mvScreenSize.y = alHeight;
         mlDisplay = alDisplay;
 		mlBpp = alBpp;
-		mbFullscreen = abFullscreen;
+		mbFullscreen = abFullscreen != 0;
 
 		mlMultisampling = alMultisampling;
 		

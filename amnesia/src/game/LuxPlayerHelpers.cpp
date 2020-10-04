@@ -781,21 +781,21 @@ void cLuxPlayerHurt::Update(float afTimeStep)
 			}
 		}
 	}
-	else if(mfPantPosAdd != 0)
+	else if(mfPantPosAdd != 0.0f)
 	{
-		float fDir = mfPantPosAdd > 0 ? -1 : 1;
+		float fDir = mfPantPosAdd > 0.0f ? -1.0f : 1.0f;
 		mfPantPosAddVel += fDir * afTimeStep;
 
-		mfPantPosAddDir = 1;
+		mfPantPosAddDir = 1.0f;
 
 		float fMax = cMath::Abs(mfPantPosAdd / mfPantSize);
 		mfPantPosAddVel = cMath::Clamp(mfPantPosAddVel, -fMax, fMax);
 
 		mfPantPosAdd += afTimeStep * mfPantPosAddVel * mfPantSpeed;
 
-		if( (fDir > 0 && mfPantPosAdd >0) || (fDir < 0 && mfPantPosAdd <0) )
+		if( (fDir > 0.0f && mfPantPosAdd >0.0f) || (fDir < 0.0f && mfPantPosAdd <0.0f) )
 		{
-			mfPantPosAdd =0;
+			mfPantPosAdd =0.0f;
 		}
 	}
 
@@ -2225,17 +2225,17 @@ void cLuxPlayerDeath::OnDraw(float afFrameTime)
 			float fYAdd = sin(mfT*0.5f + fTAdd) * 5.0f + cos(mfT*0.97f - fTAdd*2.73f) * 3.5f;
 					
 			tWString sChar = cString::SubW(sStr, i,1);
-			cVector3f vPos = cVector3f(fX, fY + fYAdd - vFontSize.y*0.5f*fMul, 6);
+			cVector3f vPos = cVector3f(fX, fY + fYAdd - vFontSize.y*0.5f*fMul, 6.0f);
 			cVector2f vSize = cVector2f(vFontSize.x, vFontSize.y + fabs(fYAdd)*1.5f) * fMul;
 
-			gpBase->mpGameHudSet->DrawFont(sChar, mpFont,vPos,vSize, cColor(1, mfTextAlpha1),eFontAlign_Left);
+			gpBase->mpGameHudSet->DrawFont(sChar, mpFont,vPos,vSize, cColor(1.0f, mfTextAlpha1),eFontAlign_Left);
 
-			float fBlurAlpha = 0;
+			float fBlurAlpha = 0.0f;
 			if(mfTextAlpha1 < 0.5f)	fBlurAlpha = mfTextAlpha1 / 0.5f;
-			else					fBlurAlpha = 1 - (mfTextAlpha1-0.5f) / 0.5f;
+			else					fBlurAlpha = 1.0f - (mfTextAlpha1-0.5f) / 0.5f;
 
-			gpBase->mpGameHudSet->DrawFont(	sChar, mpFont,vPos + cVector3f(vSize.x*0.05,vSize.y*0.05, -1), vSize*1.1, cColor(1, fBlurAlpha * 0.3f ),eFontAlign_Right);
-			gpBase->mpGameHudSet->DrawFont(	sChar, mpFont,vPos + cVector3f(vSize.x*0.15,vSize.y*0.15, -2), vSize*1.3, cColor(1, fBlurAlpha * 0.2f ),eFontAlign_Right);
+			gpBase->mpGameHudSet->DrawFont(	sChar, mpFont,vPos + cVector3f(vSize.x*0.05f,vSize.y*0.05f, -1.0f), vSize*1.1f, cColor(1.0f, fBlurAlpha * 0.3f ),eFontAlign_Right);
+			gpBase->mpGameHudSet->DrawFont(	sChar, mpFont,vPos + cVector3f(vSize.x*0.15f,vSize.y*0.15f, -2.0f), vSize*1.3f, cColor(1.0f, fBlurAlpha * 0.2f ),eFontAlign_Right);
 
 			fX += mpFont->GetLength(vFontSize* fMul, sChar.c_str());
 		}
@@ -2455,20 +2455,20 @@ void cLuxPlayerLean::Update(float afTimeStep)
 			}
 		}
 
-		mpPlayer->FadeLeanRollTo(mfRotation, 5,3);
-		mpPlayer->MoveHeadPosAdd(eLuxHeadPosAdd_Lean, cVector3f(mfMovement,0,0),2,0.05f);
+		mpPlayer->FadeLeanRollTo(mfRotation, 5.0f,3.0f);
+		mpPlayer->MoveHeadPosAdd(eLuxHeadPosAdd_Lean, cVector3f(mfMovement,0.0f,0.0f),2.0f,0.05f);
 	}
 	////////////////////////////
 	// Not pressed move back
-	else if (mfMovement !=0 || mfRotation != 0)
+	else if (mfMovement !=0.0f || mfRotation != 0.0f)
 	{
-		mfRotation =0;
-		mfMovement =0;
-		mfDir = 0;
-		mfDirAdd = 0;
+		mfRotation =0.0f;
+		mfMovement =0.0f;
+		mfDir = 0.0f;
+		mfDirAdd = 0.0f;
 
-		mpPlayer->FadeLeanRollTo(0, 4,2);
-		mpPlayer->MoveHeadPosAdd(eLuxHeadPosAdd_Lean, cVector3f(0,0,0), 1.3f, 0.1);
+		mpPlayer->FadeLeanRollTo(0.0f, 4.0f, 2.0f);
+		mpPlayer->MoveHeadPosAdd(eLuxHeadPosAdd_Lean, cVector3f(0.0f,0.0f,0.0f), 1.3f, 0.1f);
 	}
 }
 
@@ -2478,9 +2478,9 @@ void cLuxPlayerLean::Update(float afTimeStep)
 void cLuxPlayerLean::SetLean(float afMul)
 {
 	mfDir = cMath::Clamp(afMul, -1.0f, 1.0f);
-	if (fabsf(afMul) > 0)
+	if (fabsf(afMul) > 0.0f)
 	{
-		mfDirAdd = 0;
+		mfDirAdd = 0.0f;
 		mbPressed = true;
 	}
 }
@@ -2490,7 +2490,7 @@ void cLuxPlayerLean::SetLean(float afMul)
 void cLuxPlayerLean::AddLean(float afAdd)
 {
 	mfDirAdd = cMath::Clamp(mfDirAdd+afAdd, -1.0f, 1.0f);
-	mbPressed = fabsf(mfDirAdd) > 0;
+	mbPressed = fabsf(mfDirAdd) > 0.0f;
 }
 
 //-----------------------------------------------------------------------

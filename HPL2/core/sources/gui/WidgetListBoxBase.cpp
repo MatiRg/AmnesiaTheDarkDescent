@@ -349,14 +349,14 @@ namespace hpl {
 			{
 				cVector3f vPosition = GetItemStartPos();
 				
-				cVector3f vUpperLeftCorner = vPosition + cVector3f(-1,lIndex*(mvDefaultFontSize.y+2),0);
-				cVector2f vWidth = cVector2f(mvSize.x-mfSliderWidth,1);
-				cVector2f vHeight = cVector2f(1, mvDefaultFontSize.y);
+				cVector3f vUpperLeftCorner = vPosition + cVector3f(-1.0f,lIndex*(mvDefaultFontSize.y+2.0f),0.0f);
+				cVector2f vWidth = cVector2f(mvSize.x-mfSliderWidth,1.0f);
+				cVector2f vHeight = cVector2f(1.0f, mvDefaultFontSize.y);
 
-				mpSet->DrawGfx(cGui::mpGfxRect, vUpperLeftCorner, vWidth, cColor(0.3f, 0.4));
-				mpSet->DrawGfx(cGui::mpGfxRect, vUpperLeftCorner+cVector3f(0,vHeight.y,0), vWidth, cColor(0.3f, 0.4));
-				mpSet->DrawGfx(cGui::mpGfxRect, vUpperLeftCorner, vHeight, cColor(0.3f, 0.4));
-				mpSet->DrawGfx(cGui::mpGfxRect, vUpperLeftCorner+cVector3f(vHeight.x,0,0), vHeight, cColor(0.3f, 0.4));
+				mpSet->DrawGfx(cGui::mpGfxRect, vUpperLeftCorner, vWidth, cColor(0.3f, 0.4f));
+				mpSet->DrawGfx(cGui::mpGfxRect, vUpperLeftCorner+cVector3f(0.0f,vHeight.y,0.0f), vWidth, cColor(0.3f, 0.4f));
+				mpSet->DrawGfx(cGui::mpGfxRect, vUpperLeftCorner, vHeight, cColor(0.3f, 0.4f));
+				mpSet->DrawGfx(cGui::mpGfxRect, vUpperLeftCorner+cVector3f(vHeight.x,0.0f,0.0f), vHeight, cColor(0.3f, 0.4f));
 			}
 		}
 

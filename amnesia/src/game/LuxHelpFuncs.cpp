@@ -334,7 +334,7 @@ tWString cLuxHelpFuncs::ParseStringCommand(const tWString& asCommand)
 		///////////////////////////
 		// Create string from action
 		tWString sOutput = _W("");
-		for(size_t i=0; i<pAction->GetSubActionNum(); ++i)
+		for(int i=0; i<pAction->GetSubActionNum(); ++i)
 		{
 			iSubAction *pSubAction = pAction->GetSubAction(i);
 			if(i!=0) sOutput += _W(" / ");
@@ -355,7 +355,7 @@ tWString cLuxHelpFuncs::ParseStringCommand(const tWString& asCommand)
 
 				//////////
 				// Convert the type to wstring and append
-				size_t lSize = sType.length() + 1;
+				size_t lSize = sType.length() + 1u;
 				sConverted.resize(lSize);
 				std::copy(sType.begin(), sType.end(), sConverted.begin());
 

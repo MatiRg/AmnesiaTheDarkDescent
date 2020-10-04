@@ -138,11 +138,11 @@ namespace hpl {
 			return false;
 		}
 		
-		int lRet = ilLoadF(lType, pFile);
+		ILboolean lRet = ilLoadF(lType, pFile);
 
 		fclose(pFile);
 
-		return lRet;
+		return lRet == IL_TRUE;
 	}
 
 	//-----------------------------------------------------------------------
@@ -173,7 +173,7 @@ namespace hpl {
 	}
 	static ILboolean ILAPIENTRY DevilEof(ILHANDLE apHandle)
 	{
-		ILuint OrigPos, FileSize;
+		ILint OrigPos, FileSize;
 
 		// Find out the filesize for checking for the end of file
 		OrigPos = DevilTell(apHandle);

@@ -193,27 +193,27 @@ void cLuxHintHandler::DrawHintText(float afFrameTime, cGuiSet *apGuiSet)
 {
 	if(gpBase->mbPTestActivated) return;
 
-	if(mbActive==false || mfAlpha<=0) return;
+	if( mbActive == false || mfAlpha <= 0.0f) return;
 
-	float fX = mHintOscill.val*0.5;
-	cColor hintCol(1,fX,fX, mfAlpha);
-	apGuiSet->DrawFont(mpFont, cVector3f(400,mfYPos,20),mvFontSize,hintCol, eFontAlign_Center, eGuiMaterial_FontNormal,
+	float fX = mHintOscill.val*0.5f;
+	cColor hintCol(1.0f,fX,fX, mfAlpha);
+	apGuiSet->DrawFont(mpFont, cVector3f(400.0f,mfYPos,20.0f),mvFontSize,hintCol, eFontAlign_Center, eGuiMaterial_FontNormal,
 		_W(" %ls"), kTranslate("Hints", "HINT:").c_str());
 
 	tWStringVec vRows;
-	float fMaxWidth = 680;
+	float fMaxWidth = 680.0f;
 	float fStartY = mfYPos + mvFontSize.y + 3.0f;
 	mpFont->GetWordWrapRows(fMaxWidth,15, mvFontSize, msCurrentText, &vRows);
     if(vRows.size()==1)
 	{
-		apGuiSet->DrawFont(mpFont, cVector3f(400,fStartY,20),mvFontSize,cColor(1,mfAlpha), eFontAlign_Center, eGuiMaterial_FontNormal,
+		apGuiSet->DrawFont(mpFont, cVector3f(400.0f,fStartY,20.0f),mvFontSize,cColor(1,mfAlpha), eFontAlign_Center, eGuiMaterial_FontNormal,
 							_W(" %ls"), msCurrentText.c_str());
 	}
 	else
 	{
 		for(size_t i=0; i<vRows.size(); ++i)
 		{
-			apGuiSet->DrawFont(mpFont, cVector3f(400-fMaxWidth*0.5f, fStartY + (float)i* (mvFontSize.y+2.0f), 20),mvFontSize,cColor(1,mfAlpha), eFontAlign_Left, eGuiMaterial_FontNormal,
+			apGuiSet->DrawFont(mpFont, cVector3f(400.0f -fMaxWidth*0.5f, fStartY + static_cast<float>(i)* (mvFontSize.y+2.0f), 20.0f),mvFontSize,cColor(1,mfAlpha), eFontAlign_Left, eGuiMaterial_FontNormal,
 								_W(" %ls"), vRows[i].c_str());
 		}
 	}
@@ -232,22 +232,22 @@ void cLuxHintHandler::UpdateHintText(float afTimeStep)
 {
 	if(mbActive==false) return;
 
-	if(mfAlpha>0) mHintOscill.Update(afTimeStep);
+	if( mfAlpha > 0.0f ) mHintOscill.Update(afTimeStep);
 
 	/////////////////////
 	//Decrease alpha
-	if(mfShowTextCount<=0 && mfAlpha>0)
+	if( mfShowTextCount <= 0.0f && mfAlpha > 0.0f)
 	{
-		mfAlpha -= 0.5 * afTimeStep;
-		if(mfAlpha <0) mfAlpha =0;
+		mfAlpha -= 0.5f * afTimeStep;
+		if( mfAlpha < 0.0f ) mfAlpha = 0.0f;
 		return;
 	}
 	/////////////////////
 	//Increase alpha
-	if(mfShowTextCount > 0)
+	if(mfShowTextCount > 0.0f)
 	{
 		mfAlpha += 1.2f * afTimeStep;
-		if(mfAlpha >1) mfAlpha =1;
+		if(mfAlpha > 1.0f) mfAlpha = 1.0f;
 
 		mfShowTextCount -= afTimeStep;
 	}

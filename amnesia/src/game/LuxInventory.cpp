@@ -563,10 +563,10 @@ bool cLuxInventory_Slot::OnDraw(iWidget* apWidget, const cGuiMessageData& aData)
 			float fAmp = mpInventory->mfLayout_SlotPulsatingAmp;
 			float fFreq = mpInventory->mfLayout_SlotPulsatingFreq;
 
-			float fPulseAlpha = fMin + (1.0f-fMin)*(cos(mpInventory->mfTimer*fFreq)*0.5+0.5f);
+			float fPulseAlpha = fMin + (1.0f-fMin)*(cos(mpInventory->mfTimer*fFreq)*0.5f+0.5f);
 			
 			for(int i=0; i<2; ++i)
-				mpInventory->mpGuiSet->DrawGfx(pItem->GetImage(), vItemPos+cVector3f(0,0,0.1f),-1, cColor(fPulseAlpha*mfGlowAlpha*mpInventory->mfAlpha, 1), eGuiMaterial_Additive);
+				mpInventory->mpGuiSet->DrawGfx(pItem->GetImage(), vItemPos+cVector3f(0.0f,0.0f,0.1f),-1.0f, cColor(fPulseAlpha*mfGlowAlpha*mpInventory->mfAlpha, 1.0f), eGuiMaterial_Additive);
 		}
 
 		///////////////
@@ -2055,20 +2055,20 @@ bool cLuxInventory::OilOnDraw(iWidget* apWidget, const cGuiMessageData& aData)
 	//////////////////////////////
 	// Draw oil liquid
 	cVector2f vLiguidSize = apWidget->GetSize()*2;
-	cVector3f vLiquidPos = apWidget->GetGlobalPosition() - cVector3f(vLiguidSize.x*0.25f, vLiguidSize.y*0.25f, 0);
+	cVector3f vLiquidPos = apWidget->GetGlobalPosition() - cVector3f(vLiguidSize.x*0.25f, vLiguidSize.y*0.25f, 0.0f);
 
-	cVector3f vLiquidPosAdd1 = cVector3f(	sin(mfOilMovementT*0.3f) * apWidget->GetSize().x*0.5, 
-											cos(mfOilMovementT*0.2f) * apWidget->GetSize().y*0.2, 0.6f);
-	cVector3f vLiquidPosAdd2 = cVector3f(  cos(mfOilMovementT*0.2f) * apWidget->GetSize().x*0.3, 
-											sin(mfOilMovementT*0.15f) * apWidget->GetSize().y*0.15, 0.6f);
+	cVector3f vLiquidPosAdd1 = cVector3f(	sin(mfOilMovementT*0.3f) * apWidget->GetSize().x*0.5f, 
+											cos(mfOilMovementT*0.2f) * apWidget->GetSize().y*0.2f, 0.6f);
+	cVector3f vLiquidPosAdd2 = cVector3f(  cos(mfOilMovementT*0.2f) * apWidget->GetSize().x*0.3f, 
+											sin(mfOilMovementT*0.15f) * apWidget->GetSize().y*0.15f, 0.6f);
 	
-	mpGuiSet->DrawGfx(mpOilLiquid, vLiquidPos + vLiquidPosAdd1, vLiguidSize, cColor(1,0.75f*mfAlpha));
-	mpGuiSet->DrawGfx(mpOilLiquid, vLiquidPos + vLiquidPosAdd2, vLiguidSize, cColor(1,0.25f*mfAlpha));
+	mpGuiSet->DrawGfx(mpOilLiquid, vLiquidPos + vLiquidPosAdd1, vLiguidSize, cColor(1.0f,0.75f*mfAlpha));
+	mpGuiSet->DrawGfx(mpOilLiquid, vLiquidPos + vLiquidPosAdd2, vLiguidSize, cColor(1.0f,0.25f*mfAlpha));
 
 	//////////////////////////////
 	// Draw bubbles
 	for(int i=0; i<3; ++i)
-		mpGuiSet->DrawGfx(mpOilBubble[i], mvOilBubblePos[i], mpOilBubble[i]->GetActiveSize(), cColor(1, mfAlpha));
+		mpGuiSet->DrawGfx(mpOilBubble[i], mvOilBubblePos[i], mpOilBubble[i]->GetActiveSize(), cColor(1.0f, mfAlpha));
 
 
 	///////////////////////////////
@@ -2077,7 +2077,7 @@ bool cLuxInventory::OilOnDraw(iWidget* apWidget, const cGuiMessageData& aData)
 	
 	///////////////////////////////
 	// Draw frame
-	DrawElementAtCenter(vOilCenter+cVector3f(0,0,1), mpRemainingOilFG, mfAlpha);
+	DrawElementAtCenter(vOilCenter+cVector3f(0.0f,0.0f,1.0f), mpRemainingOilFG, mfAlpha);
 	
 	//mpGuiSet->DrawFont(	mpFontDefault, mvLayout_OilLabelCenter,
 	//					mvLayout_FontSize_Label, cColor(1,mfAlpha), eFontAlign_Center, eGuiMaterial_FontNormal, 

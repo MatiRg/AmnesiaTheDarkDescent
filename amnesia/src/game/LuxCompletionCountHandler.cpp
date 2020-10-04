@@ -86,21 +86,21 @@ void cLuxCompletionCountHandler::Update(float afTimeStep)
 	//Decrease alpha
 	if(mbActive==false)
 	{
-		mfAlpha -= 0.5 * afTimeStep;
-		if(mfAlpha <0) mfAlpha =0;
+		mfAlpha -= 0.5f * afTimeStep;
+		if( mfAlpha < 0.0f ) mfAlpha = 0.0f;
 		return;
 	}
 
-	if(mfDelay > 0)
+	if( mfDelay > 0.0f )
 	{
-		mfDelay -=afTimeStep;
+		mfDelay -= afTimeStep;
 		return;
 	}
 
 	/////////////////////
 	//Increase alpha
 	mfAlpha += 1.2f * afTimeStep;
-	if(mfAlpha >1) mfAlpha =1;
+	if( mfAlpha > 1.0f ) mfAlpha = 1.0f;
 
 	/////////////////////
 	//Increase count
@@ -108,14 +108,14 @@ void cLuxCompletionCountHandler::Update(float afTimeStep)
 	{
 		if(mfDisplayedAmount < mfNewAmount)
 		{
-			float fDistance = 0;//(mfNewAmount - mfDisplayedAmount);
-			mfDisplayedAmount += (fDistance+0.001) * 30 * afTimeStep;
+			float fDistance = 0.0f;//(mfNewAmount - mfDisplayedAmount);
+			mfDisplayedAmount += (fDistance+0.001f) * 30.0f * afTimeStep;
 			if(mfDisplayedAmount > mfNewAmount)mfDisplayedAmount = mfNewAmount;
 		}
 		else
 		{
 			mfDisableDelay -=afTimeStep;
-			if(mfDisableDelay <=0)
+			if(mfDisableDelay <= 0.0f )
 			{
 				mbActive = false;
 			}
@@ -129,10 +129,10 @@ void cLuxCompletionCountHandler::OnDraw(float afFrameTime)
 {
 	return;
 	
-	float fPrecent = mfDisplayedAmount * 100;
-	gpBase->mpGameHudSet->DrawFont(mpFont, cVector3f(400,20,1),21,cColor(1,mfAlpha), eFontAlign_Right,eGuiMaterial_FontNormal,
+	float fPrecent = mfDisplayedAmount * 100.0f;
+	gpBase->mpGameHudSet->DrawFont(mpFont, cVector3f(400.0f,20.0f,1.0f),21.0f,cColor(1.0f,mfAlpha), eFontAlign_Right,eGuiMaterial_FontNormal,
 									_W("%.1f%%"), fPrecent);
-	gpBase->mpGameHudSet->DrawFont(mpFont, cVector3f(400,20,1),21,cColor(1,mfAlpha), eFontAlign_Left,eGuiMaterial_FontNormal,
+	gpBase->mpGameHudSet->DrawFont(mpFont, cVector3f(400.0f,20.0f,1.0f),21.0f,cColor(1.0f,mfAlpha), eFontAlign_Left,eGuiMaterial_FontNormal,
 									_W(" %ls"), kTranslate("CompletionCount", "Completed").c_str());
 	
 }

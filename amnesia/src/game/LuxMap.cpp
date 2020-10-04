@@ -288,7 +288,7 @@ bool cLuxMap::LoadFromFile(const tString & asFile, bool abLoadEntities)
 
 		//////////////////////////
 		// Print what i've done
-		#if not MAC_OS && not LINUX
+		/*#if not MAC_OS && not LINUX
 		sDebugMsg += L" of ";
 		sDebugMsg += std::to_wstring(static_cast<long long>(lNumTotalTinderboxes));
 		sDebugMsg += L" tinderboxes removed, ";
@@ -301,7 +301,7 @@ bool cLuxMap::LoadFromFile(const tString & asFile, bool abLoadEntities)
 		sDebugMsg += L" oil removed";
 
 		gpBase->mpDebugHandler->AddMessage(sDebugMsg, false);
-        #endif
+        #endif*/
 
 		//////////////////////////
 		// Remove the entities from above

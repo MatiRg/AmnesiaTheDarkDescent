@@ -343,9 +343,9 @@ namespace hpl {
 
 			Log("Info for '%s'\n",vStrings[i]->Buffer());
 
-			lStart = pTakeInfo->mLocalTimeSpan.GetStart().GetMilliSeconds();
-			lEnd = pTakeInfo->mLocalTimeSpan.GetStop().GetMilliSeconds();
-			int lOffset = pTakeInfo->mImportOffset.GetMilliSeconds();
+			lStart = static_cast<int>(pTakeInfo->mLocalTimeSpan.GetStart().GetMilliSeconds());
+			lEnd = static_cast<int>(pTakeInfo->mLocalTimeSpan.GetStop().GetMilliSeconds());
+			int lOffset = static_cast<int>(pTakeInfo->mImportOffset.GetMilliSeconds());
 			int lAnimLength = lEnd - lStart;
 			Log("TimeSpan: %d to %d\n",lStart,lEnd);
 			Log("Offset: %d\n",lOffset);

@@ -494,7 +494,7 @@ void cLuxMusicHandler_SaveData::FromMusicHandler(cLuxMusicHandler *apMusic)
 		mfCurrentMusicMaxVolume = pMusicEntry->mfMaxVolume;
 		mfCurrentMusicVolume = pMusicEntry->mfVolume;
 		mfCurrentMusicVolumeAdd = pMusicEntry->mfVolumeAdd;
-		mfCurrentMusicTime = pMusicEntry->mpStream->GetElapsedTime();
+		mfCurrentMusicTime = static_cast<float>(pMusicEntry->mpStream->GetElapsedTime());
 		mbCurrentMusicLoop = pMusicEntry->mbLoop;
 	}
 	else

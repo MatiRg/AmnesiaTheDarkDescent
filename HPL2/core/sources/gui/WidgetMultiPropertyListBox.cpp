@@ -165,7 +165,8 @@ namespace hpl {
 		/////////////////////////////
 		// Draws items
 		vPosition = GetItemStartPos();
-		for(size_t i=mlFirstItem; i<mvItems.size(); ++i)
+		int itemCount = static_cast<int>(mvItems.size());
+		for(int i=mlFirstItem; i< itemCount; ++i)
 		{
 			if(i-mlFirstItem > mlMaxItems) break;
 
@@ -177,7 +178,7 @@ namespace hpl {
 
 			// Draw Highlight
 			if(bSelected)
-				mpSet->DrawGfx(	mpGfxSelection,vPosition - cVector3f(0,0,0.01f),
+				mpSet->DrawGfx(	mpGfxSelection,vPosition - cVector3f(0.0f,0.0f,0.01f),
 								cVector2f(mvSize.x - mfSliderWidth,mvDefaultFontSize.y+2));
 
 			// One property per column
@@ -188,7 +189,7 @@ namespace hpl {
 
 				vPosition.x = mvColumns[j]->GetGlobalPosition().x;
 				if(sublist.mAlign==eFontAlign_Right)
-					vPosition.x+= mvColumns[j]->GetSize().x-10;
+					vPosition.x+= mvColumns[j]->GetSize().x-10.0f;
 
 				if(pProp==NULL)
 					continue;
@@ -212,7 +213,7 @@ namespace hpl {
 
 				mpSet->SetCurrentClipRegion(apClipRegion);
 			}
-			vPosition.y += mvDefaultFontSize.y+2;
+			vPosition.y += mvDefaultFontSize.y+2.0f;
 		}
 
 

@@ -671,12 +671,12 @@ void cOAL_Source::SetElapsedTime(double afTime)
 	switch(GetSourceType())
 	{
 	case eOAL_AudioDataType_Sample:
-		RUN_AL_FUNC(alSourcef(mlObjectId, AL_SEC_OFFSET, (float)afTime));
+		RUN_AL_FUNC(alSourcef( mlObjectId, AL_SEC_OFFSET, static_cast<float>(afTime)) );
 		break;
 	case eOAL_AudioDataType_Stream:
 		{
 			cOAL_Stream* pStream = (cOAL_Stream*)mpAudioData;
-			pStream->Seek((float)afTime/mpAudioData->GetTotalTime());
+			pStream->Seek( static_cast<float>(afTime/mpAudioData->GetTotalTime()) );
 		}
 		break;
 	}

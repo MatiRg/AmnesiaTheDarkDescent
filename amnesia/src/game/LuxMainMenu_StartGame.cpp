@@ -75,7 +75,7 @@ void cLuxMainMenu_StartGame::CreateGui()
 	vPos.y = mpWindow->GetSize().y - 35;
 
 	// Start Game
-	cWidgetButton* pButton = mpGuiSet->CreateWidgetButton(vPos, cVector2f(fButtonWidth * 2.0 + fButtonSepp, 30), kTranslate("MainMenu", "Start Game"), mpWindow);
+	cWidgetButton* pButton = mpGuiSet->CreateWidgetButton(vPos, cVector2f(fButtonWidth * 2.0f + fButtonSepp, 30.0f), kTranslate("MainMenu", "Start Game"), mpWindow);
 	pButton->AddCallback(eGuiMessage_ButtonPressed,this, kGuiCallback(PressStartGame));
 	pButton->AddCallback(eGuiMessage_UIButtonPress,this, kGuiCallback(UIPressStart));
 	mpStartButton = pButton;
@@ -84,7 +84,7 @@ void cLuxMainMenu_StartGame::CreateGui()
 	vPos.x = (vPos.x / 2.0f) - (fButtonWidth / 2.0f);
 
 	// Cancel
-	pButton = mpGuiSet->CreateWidgetButton(vPos, cVector2f(fButtonWidth, 30), kTranslate("Global", "Cancel"), mpWindow);
+	pButton = mpGuiSet->CreateWidgetButton(vPos, cVector2f(fButtonWidth, 30.0f), kTranslate("Global", "Cancel"), mpWindow);
 	pButton->AddCallback(eGuiMessage_ButtonPressed, this, kGuiCallback(PressCancel));
 	pButton->AddCallback(eGuiMessage_UIButtonPress, this, kGuiCallback(UIPressCancel));
 	vButtons.push_back(pButton);
@@ -92,22 +92,22 @@ void cLuxMainMenu_StartGame::CreateGui()
 	// Normal
 	float fButtonHeight = 30.0f;
 
-	vPos.x = (mvWindowSize.x) - ((fButtonWidth * 2.0f) + fButtonSepp * 4);
+	vPos.x = (mvWindowSize.x) - ((fButtonWidth * 2.0f) + fButtonSepp * 4.0f);
 
 	cVector3f vButtonPosition = cVector3f(
 		(vPos.x / 2.0f) - (fButtonWidth / 2.0f), 
-		(fBorderSize + (mvWindowSize.y / 4.0)) - (fButtonHeight / 2.0), 
+		(fBorderSize + (mvWindowSize.y / 4.0f)) - (fButtonHeight / 2.0f), 
 		0.1f);
 	vButtonPosition.z = 0.1f;
 
 	// Normal mode
-	mpNormalModeButton = mpGuiSet->CreateWidgetButton(vButtonPosition, cVector2f(fButtonWidth, 30), kTranslate("MainMenu","NormalMode"), mpWindow);// Translate This
+	mpNormalModeButton = mpGuiSet->CreateWidgetButton(vButtonPosition, cVector2f(fButtonWidth, 30.0f), kTranslate("MainMenu","NormalMode"), mpWindow);// Translate This
 	mpNormalModeButton->AddCallback(eGuiMessage_ButtonPressed, this, kGuiCallback(PressNormalMode));
 	mpNormalModeButton->AddCallback(eGuiMessage_UIButtonPress, this, kGuiCallback(UIPressNormalMode));
 	mpNormalModeButton->SetDefaultFontColor(cColor(232.0f / 255.0f, 201.0f / 255.0f, 28.0f / 255.0f, 1.0f));
 	vButtons.push_back(mpNormalModeButton);
 
-	vButtonPosition.y += 35 + fButtonSepp;
+	vButtonPosition.y += 35.0f + fButtonSepp;
 
 	// Hard mode
 	mpHardModeButton = mpGuiSet->CreateWidgetButton(vButtonPosition, cVector2f(fButtonWidth, 30), kTranslate("MainMenu", "HardMode"), mpWindow);// Translate This

@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+amnesia/_temp
+HPL2/lib
+amnesia/redist
+
 # User-specific files
 *.rsuser
 *.suo

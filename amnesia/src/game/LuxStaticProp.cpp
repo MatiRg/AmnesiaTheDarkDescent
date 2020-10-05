@@ -99,9 +99,12 @@ void cLuxStaticPropLoader::AfterLoad(cXmlElement *apRootElem, const cMatrixf &a_
 //-----------------------------------------------------------------------
 
 
-cLuxStaticProp::cLuxStaticProp(const tString &asName, int alID)
+cLuxStaticProp::cLuxStaticProp(const tString &asName, int alID):
+	msName(asName)
 {
-	msName = asName;
+	mpMap = nullptr;
+	mpMeshEntity = nullptr;
+
 	mlID = alID;
 }
 

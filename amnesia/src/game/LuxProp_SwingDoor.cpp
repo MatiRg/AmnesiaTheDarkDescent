@@ -106,6 +106,14 @@ void cLuxPropLoader_SwingDoor::LoadInstanceVariables(iLuxProp *apProp, cResource
 
 cLuxProp_SwingDoor::cLuxProp_SwingDoor(const tString &asName, int alID, cLuxMap *apMap) : iLuxProp(asName,alID,apMap, eLuxPropType_SwingDoor)
 {
+	mbCanInteractWithStaticBody = false;
+	mbDisableBreakable = false;
+	mbBreakable = false;
+
+	mfBreakImpulse = 0.0f;
+	mfHealthDamage[0] = 0.0f;
+	mfHealthDamage[1] = 0.0f;
+
 	mbClosed = false;
 	mbLocked = false;	
 

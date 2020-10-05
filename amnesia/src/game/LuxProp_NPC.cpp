@@ -124,7 +124,10 @@ void cLuxPropLoader_NPC::LoadInstanceVariables(iLuxProp *apProp, cResourceVarsOb
 
 cLuxProp_NPC::cLuxProp_NPC(const tString &asName, int alID, cLuxMap *apMap) : iLuxProp(asName,alID,apMap, eLuxPropType_NPC)
 {
-	 mfHeadAngle = 0;
+	 mfHeadMoveSpeedMul = 0.0f;
+	 mfHeadMoveMaxSpeed = 0.0f;
+	 mfMaxHeadAngle = 0.0f;
+	 mfHeadAngle = 0.0f;
 	 mfInAreaCount =0;
 	 mpFollowPlayerArea = NULL;
 	 mbPlayerIsInArea = false;
